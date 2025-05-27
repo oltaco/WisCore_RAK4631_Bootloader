@@ -60,7 +60,7 @@ RM = rm -rf
 CP = cp
 
 # Flasher utility options
-NRFUTIL = ./adafruit-nrfutil.exe
+NRFUTIL = adafruit-nrfutil
 NRFJPROG = nrfjprog
 FLASHER ?= nrfjprog
 PYOCD ?= pyocd
@@ -317,6 +317,11 @@ ifeq ($(DEBUG), 1)
   RTT_SRC = lib/SEGGER_RTT
   IPATH += $(RTT_SRC)/RTT
   C_SRC += $(RTT_SRC)/RTT/SEGGER_RTT.c
+endif
+
+# Fixes for gcc version 12, 13 and 14.
+ifneq (,$(filter 12.% 13.% 14.%,$(shell $(CC) -dumpversion 2>/dev/null)))
+	CFLAGS += --param=min-pagesize=0
 endif
 
 #------------------------------------------------------------------------------
