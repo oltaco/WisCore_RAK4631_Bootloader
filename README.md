@@ -6,7 +6,9 @@ This bootloader will reboot back to OTA DFU mode after an unsuccessful flash so 
 
 ## Installation
 
-The easiest way to install the bootloader is with UF2 mode.
+There are two options to install the bootloader, the easiest way is with UF2 mode. Installing the bootloader this way will keep your app firmware intact.
+
+### Flashing with UF2 file.
 1. Boot the RAK into UF2 mode by double pressing the reset button.
 2. Copy the UF2 file onto the RAK4631 drive that appears.
 3. The RAK will reboot and you should be running the new bootloader.
